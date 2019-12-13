@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+        <record id="view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+               <xpath expr="//button[@name='action_quotation_send']" position="before">
+                    <button name="action_submit" states="submit" string="Submit" class="o_sale_confirm" type="object"/>
+                </xpath>
+
+                <xpath expr="//button[@name='action_cancel']" position="attributes">
+                    <attribute name="states">sale,sent,first_approval,second_approval</attribute>
+                 </xpath>
+                 <xpath expr="//button[@name='action_confirm'][1]" position="replace">
+                   <button name="action_confirm" states="sent" string="Confirm Sale" class="btn-primary o_sale_confirm" type="object" groups="ng_double_approval_sale.confirm_sale_sale_approval" />
+                 </xpath>
+
+                <xpath expr="//button[@name='action_confirm'][2]" position="replace">
+                    <button name="action_confirm" states="draft" string="Confirm Sale" class="o_sale_confirm" type="object" invisible="1" groups="ng_double_approval_sale.confirm_sale_sale_approval"/>
+                </xpath>
+
+                <xpath expr="//button[@name='action_confirm'][1]" position="attributes">
+                    <attribute name="states">second_approval</attribute>
+                 </xpath>
+
+                <xpath expr="//field[@name='state']" position="replace">
+                       <field name="state" widget="statusbar" statusbar_visible="submit,draft,sent,first_approval,second_approval,sale"/>
+                </xpath>
+
+
+                 <xpath expr="//button[@name='action_quotation_send']" position="after">
+                       <button name="action_first_approval" states="draft,sent" type="object" string="First Approval" groups="ng_double_approval_sale.group_first_level_sale_approval"/>
+                 </xpath>
+                <xpath expr="//button[@name='action_first_approval']" position="after">
+                       <button name="action_second_approval" states="first_approval" type="object" string="Second Approval" groups="ng_double_approval_sale.group_second_level_sale_approval"/>
+                 </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

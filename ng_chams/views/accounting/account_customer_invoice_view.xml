@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <record id="customer_invoice_view" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_icu_approval" states="draft" string="ICU Approval" type="object" class="oe_highlight"/>
+
+                    <button name="return_action_draft" states="icu_approval" string="Return" type="object" class="oe_highlight" groups="ng_chams.group_icu_approval"/>
+                    <button name="action_coo_approval" states="icu_approval" string="COO Approval" type="object" class="oe_highlight" groups="ng_chams.group_icu_approval"/>
+
+                    <button name="action_md_approval" states="coo_approval" string="MD Approval" type="object" class="oe_highlight" groups="ng_chams.group_coo_approval"/>
+                    <button name="return_icu_approval" states="coo_approval" string="Return" type="object" class="oe_highlight" groups="ng_chams.group_coo_approval"/>
+
+                    <button name="return_coo_approval" states="md_approval" string="Return" type="object" class="oe_highlight" groups="ng_chams.group_md_approval"/>
+
+                </xpath>
+
+
+                <xpath expr="//header/button[@name='action_invoice_open']" position="replace">
+                    <button name="action_invoice_open"
+                            states="md_approval"
+                            string="Validate"
+                            groups="ng_chams.group_md_approval"
+                            type="object" class="oe_highlight"/>
+                    <button name="action_invoice_open" type="object" states="proforma2" string="Validate" groups="account.group_account_invoice"/>
+                </xpath>
+
+
+                <xpath expr="//header/button[@name='action_invoice_cancel']" position="replace">
+                    <button name="action_invoice_cancel"
+                            states="md_approval"
+                            string="Cancel"
+                            groups="ng_chams.group_md_approval"
+                            type="object" class="oe_highlight"/>
+                </xpath>
+
+                <field name="state" position="replace">
+                     <field name="state" widget="statusbar"/>
+                </field>
+
+
+                <!--<xpath expr="//form/header/field[@name='state']" position="replace">-->
+                    <!--<field name="state" widget="statusbar"-->
+                           <!--statusbar_visible="draft,icu_approval,coo_approval"/>-->
+                <!--</xpath>-->
+            </field>
+        </record>
+    </data>
+</odoo>

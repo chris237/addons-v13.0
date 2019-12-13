@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+       <!-- Access Groups -->
+        <record id="approval_group_categ" model="ir.module.category">
+            <field name="name">Approval Category</field>
+            <field name="sequence" eval="1"/>
+        </record>
+
+        <record id="department_head" model="res.groups">
+            <field name="name">HOD</field>
+            <field name="category_id" ref="approval_group_categ"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="internal_audit" model="res.groups">
+            <field name="name">Internal Audit</field>
+            <field name="category_id" ref="approval_group_categ"/>
+            <field name="implied_ids" eval="[(4, ref('department_head'))]"/>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="financial_controller" model="res.groups">
+            <field name="name">Financial Controller (CFO)</field>
+            <field name="category_id" ref="approval_group_categ"/>
+            <field name="implied_ids" eval="[(4, ref('internal_audit'))]"/>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="managing_director" model="res.groups">
+            <field name="name">Managing Director</field>
+            <field name="category_id" ref="approval_group_categ"/>
+            <field name="implied_ids" eval="[(4, ref('financial_controller'))]"/>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+       <record id="group_first_level_purchase_approval" model="res.groups">
+            <field name="name">First Purchase Approval</field>
+        </record>
+
+        <record id="group_second_level_purchase_approval" model="res.groups">
+            <field name="name">Second Purchase Approval</field>
+        </record>
+
+    </data>
+</odoo>

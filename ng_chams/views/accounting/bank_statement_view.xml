@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <record id="view_bank_statement" model="ir.ui.view">
+            <field name="name">account.bank.statement</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account.view_bank_statement_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="name" readonly="True"/>
+                </xpath>
+            </field>
+        </record>
+
+          <record forcecreate="1" id="bank_statement_id" model="ir.sequence">
+			<field name="name">Bank Statement</field>
+			<field name="code">name</field>
+			<field name="padding">5</field>
+			<field name="prefix">BNK/%(year)s/</field>
+			<field name="suffix"></field>
+			<field name="implementation">no_gap</field>
+		</record>
+
+    </data>
+</odoo>

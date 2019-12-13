@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+         <record id="sale_receipt_voucher_view" model="ir.ui.view">
+            <field name="name">account.voucher.sale.form</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_sale_receipt_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="submit" states="draft" string="Submit" type="object" class="oe_highlight"/>
+
+                    <button name="action_icu_approval" states="submitted" string="ICU Approval" type="object" class="oe_highlight" groups="ng_chams.group_icu_approval"/>
+                    <button name="return_submit" states="submitted" string="Return" type="object" class="oe_highlight" groups="ng_chams.group_icu_approval"/>
+
+
+                    <button name="return_action_draft" states="icu_approval" string="Return" type="object" class="oe_highlight" groups="ng_chams.group_coo_approval"/>
+                    <button name="action_coo_approval" states="icu_approval" string="COO Approval" type="object" class="oe_highlight" groups="ng_chams.group_coo_approval"/>
+
+                    <button name="action_md_approval" states="coo_approval" string="MD Approval" type="object" class="oe_highlight" groups="ng_chams.group_md_approval"/>
+                    <button name="return_icu_approval" states="coo_approval" string="Return" type="object" class="oe_highlight" groups="ng_chams.group_md_approval"/>
+
+                    <button name="return_coo_approval" states="md_approval" string="Return" type="object" class="oe_highlight" groups="ng_chams.group_md_approval"/>
+
+                </xpath>
+
+
+                <xpath expr="//header/button[@name='proforma_voucher']" position="replace">
+                    <button name="proforma_voucher"
+                            states="draft"
+                            string="Validate"
+                            type="object" class="oe_highlight" attrs="{'invisible': ['|',('partner_type','=', 'customer'),('state','!=','md_approval')]}"/>
+
+                </xpath>
+
+
+                <xpath expr="//header/button[@name='cancel_voucher']" position="replace">
+                    <button name="cancel_voucher"
+                            states="md_approval"
+                            string="Cancel Receipt"
+                            type="object" class="oe_highlight"/>
+                </xpath>
+
+
+                <!--<xpath expr="//form/header/field[@name='state']" position="replace">-->
+                    <!--<field name="state" widget="statusbar"-->
+                           <!--statusbar_visible="draft,submitted,icu_approval,coo_approval,md_approval,posted"/>-->
+                <!--</xpath>-->
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,6 @@
+<odoo>
+    <data>
+        <menuitem id="menu_petty_cash" name="Petty Cash" parent="account.menu_finance" sequence="10"/>
+
+    </data>
+</odoo>

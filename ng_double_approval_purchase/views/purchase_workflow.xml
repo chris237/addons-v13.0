@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+
+<record id="purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+
+                </data>
+                <xpath expr="//field[@name='state']" position="replace">
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="submit,draft,first_approval,second_approval,sent,purchase"
+                           readonly="1"/>
+                </xpath>
+
+                 <xpath expr="//button[@name='button_confirm'][1]" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
+            <xpath expr="//button[@name='action_rfq_send']" position="before">
+                <button name="action_submit" states="submit" type="object" string="Submit"/>
+            </xpath>
+
+                 <xpath expr="//button[@name='action_rfq_send']" position="after">
+                       <button name="action_first_approval" states="draft,sent" type="object" string="First Approval" groups="ng_double_approval_purchase.group_first_level_purchase_approval"/>
+                 </xpath>
+
+                <xpath expr="//button[@name='action_first_approval']" position="after">
+                       <button name="action_second_approval" states="first_approval" type="object" string="Second Approval"
+                               groups="ng_double_approval_purchase.group_second_level_purchase_approval"/>
+                 </xpath>
+
+
+                <!--<xpath expr="//button[@name='action_view_picking']" position="attributes">-->
+                    <!--<attribute name="attrs">{'invisible': ['|', '|' , ('is_shipped', '=', True), ('state','not in', ('second_approval')), ('picking_count', '=', 0)]}</attribute>-->
+                 <!--</xpath>-->
+
+                 <xpath expr="//button[@name='button_confirm'][2]" position="attributes">
+                  <!--<button name="button_confirm" type="object" states="second_approval" string="Confirm Order" -->
+                          <!--class="oe_highlight" id="bid_confirm"/>-->
+                    <attribute name="states">second_approval</attribute>
+                 </xpath>
+
+                 <xpath expr="//button[@name='button_cancel']" position="attributes">
+                    <attribute name="states">first_approval,second_approval,to approve,sent,purchase</attribute>
+                 </xpath>
+            </field>
+</record>
+
+    </data>
+</odoo>

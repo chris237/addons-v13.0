@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <record id="account_asset_view" model="ir.ui.view">
+            <field name="name">	account.asset.asset.form</field>
+            <field name="model">account.asset.asset</field>
+            <field name="inherit_id" ref="account_asset.view_account_asset_asset_form"/>
+            <field name="arch" type="xml">
+
+                 <xpath expr="//header" position="replace">
+                    <header attrs="{'invisible':[('method_asset','!=','add')]}">
+                        <button name="submit" states="draft" string="Submit" type="object" class="oe_highlight"/>
+
+                        <button name="action_icu_approval" states="submitted" string="ICU Approval" type="object" class="oe_highlight" groups="ng_chams.group_icu_approval"/>
+                        <button name="return_submit" states="submitted" string="Return" type="object" class="oe_highlight" groups="ng_chams.group_icu_approval"/>
+
+
+                        <button name="return_action_draft" states="icu_approval" string="Return" type="object" class="oe_highlight" groups="ng_chams.group_coo_approval"/>
+                        <button name="action_coo_approval" states="icu_approval" string="COO Approval" type="object" class="oe_highlight" groups="ng_chams.group_coo_approval"/>
+
+                        <button name="action_md_approval" states="coo_approval" string="MD Approval" type="object" class="oe_highlight" groups="ng_chams.group_md_approval"/>
+                        <button name="return_icu_approval" states="coo_approval" string="Return" type="object" class="oe_highlight" groups="ng_chams.group_md_approval"/>
+
+                        <button name="return_coo_approval" states="md_approval" string="Return" type="object" class="oe_highlight" groups="ng_chams.group_md_approval"/>
+
+
+                        <button name="validate1"
+                            states="md_approval"
+                            string="Confirm"
+                            groups="ng_chams.group_md_approval"
+                            type="object" class="oe_highlight"/>
+
+                        <button name="set_to_draft_app" states="cancel" string="Set to Draft" type="object" />
+						<button name="approve" states="open" class="oe_highlight" string="Approve" type="object" />
+						<button name="set_to_draft" states="reject" string="Set to Draft" type="object" />
+						<button name="set_to_draft" states="close" string="Set to Draft" type="object" />
+						<button name="set_to_close1" states="open" string="Reject" type="object" />
+						<button name="set_to_cancel" states="draft" string="Cancel" type="object" />
+
+                    </header>
+
+
+                </xpath>
+
+
+                <xpath expr="//page/button[@name='compute_depreciation_board']" position="replace">
+                    <button name="compute_depreciation_board"
+                            states="md_approval"
+                            string="Compute Depreciation"
+                            groups="ng_chams.group_md_approval"
+                            type="object" class="oe_highlight"/>
+                </xpath>
+
+
+                <!--<xpath expr="//footer/field[@name='state']" position="replace">-->
+                    <!--<field name="state" widget="statusbar"/>-->
+                <!--</xpath>-->
+
+            </field>
+        </record>
+    </data>
+</odoo>

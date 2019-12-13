@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+       <record id="group_first_level_inventory_approval" model="res.groups">
+            <field name="name">First Inventory Approval</field>
+        </record>
+
+        <record id="group_second_level_inventory_approval" model="res.groups">
+            <field name="name">Second Inventory Approval</field>
+        </record>
+    </data>
+</odoo>
