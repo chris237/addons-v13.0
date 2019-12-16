@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<delete id="hr_holidays.hr_leave_rule_employee" model="ir.rule"/>
+		<delete id="hr_holidays.hr_leave_rule_officer_read" model="ir.rule"/>
+
+		<record id="hr_holidays.group_hr_holidays_user" model="res.groups">
+    	 	 <field name="implied_ids" eval="[(3, ref('hr.group_hr_user'))]"/>
+    	</record>
+
+		<record id="hr_holidays.hr_leave_rule_officer_update" model="ir.rule">
+			<field name="perm_read" eval="True"/>
+			<field name="domain_force">[
+				'|', ('employee_id.user_id', '=', user.id), ('employee_id.parent_id.user_id', 'in', [user.id])
+			]</field>
+		</record>
+
+		<record id="hr_holidays.hr_leave_rule_employee_update" model="ir.rule">
+			<field name="perm_read" eval="True"/>
+		</record>
+
+		<record id="hr_holidays.hr_leave_rule_employee_update" model="ir.rule">
+			<field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+		</record>
+
+	</data>
+</odoo>
