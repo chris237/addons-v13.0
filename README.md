@@ -1,7 +1,7 @@
 ## List of modules that has been migrated to v13.0
 
 
-* Single checked means that it has not be tested and confirmed by the functional team.*
+The checkbox is meant to show the status of the module
 
 
-- [x] [] ng_internal_requisition
+- [x]  ng_internal_requisition
