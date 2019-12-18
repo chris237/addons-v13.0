@@ -12,18 +12,18 @@
             <field name="code">night</field>
         </record>
 
-	    <record model="hr.leave.type" id="hr_holidays.holiday_status_cl">
-	      <field name="is_payslip">True</field>
-	      <field name="can_carryfw">True</field>
-	    </record>
+<!--	    <record model="hr.leave.type" id="hr_holidays.holiday_status_cl">-->
+<!--	      <field name="is_payslip">True</field>-->
+<!--	      <field name="can_carryfw">True</field>-->
+<!--	    </record>-->
 
-	    <record model="hr.leave.type" id="hr_holidays.holiday_status_sl">
-	      <field name="can_carryfw">True</field>
-	    </record>
+<!--	    <record model="hr.leave.type" id="hr_holidays.holiday_status_sl">-->
+<!--	      <field name="can_carryfw">True</field>-->
+<!--	    </record>-->
 
-	    <record model="hr.leave.type" id="hr_holidays.holiday_status_unpaid">
-	      <field name="is_payslip">True</field>
-	    </record>
+<!--	    <record model="hr.leave.type" id="hr_holidays.holiday_status_unpaid">-->
+<!--	      <field name="is_payslip">True</field>-->
+<!--	    </record>-->
 
 	    <record model="hr.leave.type" id="holiday_status_travel">
 	      <field name="name">Travel Leaves</field>

@@ -43,7 +43,7 @@ class payroll_reg(models.TransientModel):
     xls_output = fields.Boolean(
         string='Excel Output', help='Tick if you want to output of report in excel sheet')
 
-    def print_report(self, data):
+    def print_report(self):
         """
          To get the date and print the report
          @param self: The object pointer.

@@ -757,7 +757,7 @@ class hr_payslip(models.Model):
                 pass
             else:
                 raise Warning(
-                    _('You can not create Paysip(s) as Salary Structure still need to approve by authorize person.'))
+                    _('You cannot create Payslip(s) as Salary Structure still need to approve by authorize person.'))
         if vals.get('company_id', False):
             company = self.env['res.company'].browse(
                 vals['company_id']).no_payroll_run

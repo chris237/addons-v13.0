@@ -67,7 +67,7 @@
         'report/contribution_register_mod_report_view.xml',
         'report/payroll_register_report_view.xml'
     ],
-    'demo': ['ng_hr_payroll_demo.xml'],
+    'demo': ['views/ng_hr_payroll_demo.xml'],
     'js': ['static/src/js/view_form.js'],
     'installable': True,
     'auto_install': False,

@@ -39,34 +39,34 @@
             </field>
         </record>
 
-<!--        <record id="view_hr_employee_structure_form" model="ir.ui.view">-->
-<!--            <field name="name">hr.payroll.structure.inherit.form</field>-->
-<!--            <field name="model">hr.payroll.structure</field>-->
-<!--            <field name="inherit_id" ref="hr_payroll.view_hr_employee_grade_form" />-->
-<!--            <field name="arch" type="xml">-->
-<!--                <xpath expr="//form/group" position="before">-->
-<!--                    <header>-->
-<!--                        <separator string="" colspan="4" />-->
-<!--                        <button name="button_cancel" string="Cancel" states="draft" type="object" />-->
-<!--                        <button name="button_done" class="oe_highlight" string="Approve" states="draft" type="object" />-->
-<!--                        <button name="button_draft" string="Reset to Draft" states="approve" type="object" />-->
-<!--                        <button name="button_draft" string="Reset to Draft" states="cancel" type="object" />-->
-<!--                        <field name="state" widget="statusbar" />-->
-<!--                    </header>-->
-<!--                </xpath>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="view_hr_employee_structure_form" model="ir.ui.view">
+            <field name="name">hr.payroll.structure.inherit.form</field>
+            <field name="model">hr.payroll.structure</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_employee_grade_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet" position="before">
+                    <header>
+                        <separator string="" colspan="4" />
+                        <button name="button_cancel" string="Cancel" states="draft" type="object" />
+                        <button name="button_done" class="oe_highlight" string="Approve" states="draft" type="object" />
+                        <button name="button_draft" string="Reset to Draft" states="approve" type="object" />
+                        <button name="button_draft" string="Reset to Draft" states="cancel" type="object" />
+                        <field name="state" widget="statusbar" />
+                    </header>
+                </xpath>
+            </field>
+        </record>
 
-<!--        <record id="view_hr_payroll_structure_tree_inh" model="ir.ui.view">-->
-<!--            <field name="name">hr.payroll.structure.tree</field>-->
-<!--            <field name="model">hr.payroll.structure</field>-->
-<!--            <field name="inherit_id" ref="hr_payroll.view_hr_payroll_structure_list_view" />-->
-<!--            <field name="arch" type="xml">-->
-<!--                <field name="company_id" position="after">-->
-<!--                    <field name="state" />-->
-<!--                </field>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="view_hr_payroll_structure_tree_inh" model="ir.ui.view">
+            <field name="name">hr.payroll.structure.tree</field>
+            <field name="model">hr.payroll.structure</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payroll_structure_list_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <field name="state" />
+                </xpath>
+            </field>
+        </record>
 
         <record id="view_hr_payroll_structure_filter_inherit" model="ir.ui.view">
             <field name="name">hr.payroll.structure.select</field>
